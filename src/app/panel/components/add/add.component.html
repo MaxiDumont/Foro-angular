@@ -1,0 +1,68 @@
+<div class="col-lg-10">
+    <h3>{{page_title}}</h3>
+        <!-- Mensajes de error y exito -->    
+        <div class="alert alert-success col-md-5" *ngIf="status == 'success' && edit== '' ">
+            El tema se ha creado correctamente.
+        </div>
+
+        <div class="alert alert-danger col-md-5" *ngIf="status == 'error' && edit== '' ">
+            Error al crear un nuevo tema 
+        </div>
+
+        <div class="alert alert-success col-md-5" *ngIf="status == 'success' && edit== 'success' ">
+            El tema se ha editado correctamente
+        </div>
+
+        <div class="alert alert-danger col-md-5" *ngIf="status == 'error' && edit== 'error' ">
+            Error al editar un nuevo tema 
+        </div>
+        
+        <!-- formulario de registro -->
+    <form #addTopic="ngForm" (ngSubmit)="onSubmit(addTopic)">
+        
+        <div class="form-group">
+            <label for="title">Titutlo</label>
+            <input type="text" name="title" class="form-control" #title="ngModel" [(ngModel)]="topic.title"
+            required>
+
+            <small *ngIf="!title.valid && title.touched" class="invalid-feedback d-block">
+                El titulo no es válido
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="content">Pon tu pregunta o Contenido</label>
+            <textarea type="text" name="content" class="form-control" #content="ngModel" [(ngModel)]="topic.content"
+            required ></textarea>
+
+            <small *ngIf="!content.valid && content.touched" class="invalid-feedback d-block">
+                El Contenido no es válido
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="code">Pon tu codigo</label>
+            <textarea type="text" name="code" class="form-control" #code="ngModel" [(ngModel)]="topic.code"
+            required ></textarea>
+
+            <small *ngIf="!code.valid && code.touched" class="invalid-feedback d-block">
+                El codigo no es válido
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="lang">¿Sobre que lenguaje Hablas?</label>
+            <input type="text" name="lang" class="form-control" #lang="ngModel" [(ngModel)]="topic.lang"
+            required >
+
+            <small *ngIf="!lang.valid && lang.touched" class="invalid-feedback d-block">
+                El nombre no es válido
+            </small>
+        </div>
+
+        <br>
+        <input type="submit" value="Enviar" class="btn btn-success" [disabled]="addTopic.invalid">
+        <br>
+
+    </form>
+</div>

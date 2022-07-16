@@ -1,0 +1,40 @@
+<div class="col-lg-12 mt-3">
+    <h1>{{page_title}}</h1>
+    <hr>
+
+    <ul class="list-group list-topics">
+        <!-- aria-disabled="true" -->
+        <li class="list-group-item" *ngFor="let topic of topics">
+            <h4>
+                <a [routerLink]="['/tema',topic._id]">{{topic.title}}</a>
+            </h4>
+            <span class="badge bg-primary">
+                {{topic.user.name+" "+topic.user.surname}} 
+            </span>
+            <span class="badge bg-light text-dark ml-2">
+                {{topic.date | amLocale: 'es' | amTimeAgo  }}
+            </span>
+            <a type="button" class="btn btn-primary" style="float:right;" [routerLink]="['/tema',topic._id]">
+                Leer
+            </a>
+      </ul>
+      <div class="clearfix"></div>
+      <!-- navegacion de paginas -->
+      
+        <ul class="pagination" style="margin-top: 50px; margin-left:45%;">
+          <li class="page-item">
+              <a class="page-link" [routerLink]="['/temas/', prev_page]">&laquo;</a>
+            </li>
+
+          <li class="page-item" >
+              <a class="page-link" [routerLink]="['/temas/',actual_page]">{{actual_page}}</a>
+            </li>
+
+          <li class="page-item">
+              <a class="page-link" [routerLink]="['/temas/', next_page]">&raquo;</a>
+            </li>
+        </ul>
+     
+
+
+</div>

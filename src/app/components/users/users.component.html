@@ -1,0 +1,27 @@
+<div class="col-lg-12 mt-3">
+    <h1>{{page_title}}</h1>
+    <hr>
+
+    <ul class="list-group list-users">
+        <!-- aria-disabled="true" -->
+        <li class="list-group-item" *ngFor="let user of users">
+            <!-- si la imagen existe -->
+            <div class="float-left mr-4" *ngIf="user.image!='null'">
+            <img src="{{url+'avatar/'+user.image}}" class="avatar-list" style="float: left;">
+            </div>
+            <!-- si la imagen no existe -->
+            <div class="float-left mr-4" *ngIf="user.image=='null'">
+                <img src="assets/image/imagedefaul.png" class="avatar-list" style="float: left;">
+            </div>
+            <h4>
+                <a [routerLink]="['/perfil',user._id]" style="position: absolute; margin-left: 50px; margin-bottom: 50px;">
+                    {{user.name+' '+user.surname}}
+                </a>
+            </h4>
+            <a type="button" class="btn btn-primary" style="float:right;" [routerLink]="['/perfil',user._id]">
+                Ver perfil
+            </a>
+      </ul>
+      
+      <div class="clearfix"></div>
+</div>
